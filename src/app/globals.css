@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+:root {
+  --clb-c-base-white: #fff;
+  --clb-c-base-black: oklch(0 0 0 / 1);
+  --clb-c-gray-blue-300: oklch(79.02% 0.0499 278.79);
+  --clb-c-gray-blue-400: oklch(0.60 0.10 276.31 / 1);
+  --clb-c-gray-blue-600: oklch(0.42 0.10 274.88 / 1);
+  --clb-c-gray-blue-700: oklch(0.39 0.09 274.07 / 1);
+  --clb-c-gray-blue-800: oklch(0.32 0.07 274.09 / 1);
+  --clb-c-gray-blue-850: oklch(0.26 0.05 274.39 / 1);
+  --clb-c-gray-blue-870: oklch(0.22 0.04 274.59 / 1);
+  --clb-c-gray-blue-900: oklch(19.25% 0.0327 274.82);
+  --clb-c-blue-600: oklch(0.57 0.21 258.93 / 1);
+  --clb-c-primary: oklch(0.57 0.21 258.93 / 1);
+  --clb-c-blue-700: oklch(0.51 0.20 260.89 / 1);
+
+  --clb-c-blue-light-400: oklch(0.76 0.14 232.13 / 1);
+  --clb-c-blue-light-500: oklch(0.69 0.15 238.37 / 1);
+
+  --clb-c-g-61-first: oklch(0.58 0.30 308.10 / 1);
+  --clb-c-g-61-second: oklch(0.59 0.21 273.59 / 1);
+  --clb-c-g-61-third: oklch(0.83 0.14 202.84 / 1);
+
+  --clb-c-g-62-first: oklch(0.37 0.26 264.29 / 1);
+  --clb-c-g-62-second: oklch(0.43 0.27 264.84 / 1);
+  --clb-c-g-62-third: oklch(0.83 0.14 202.84 / 1);
+
+
+
+
+  --clb-c-g-82-first: oklch(0.90 0.13 183.40 / 1);
+  --clb-c-g-82-second: oklch(0.62 0.21 279.99 / 1);
+
+  --clb-c-g-gray-first: oklch(0.26 0.05 274.39 / 1);
+  --clb-c-g-gray-second: oklch(0.22 0.04 274.59 / 1);
+
+  --clb-c-green-500: oklch(0.87 0.17 143.38 / 1);
+  --clb-c-green-600: oklch(0.67 0.16 155.59 / 1);
+  --clb-c-orange-500: oklch(0.75 0.17 62.11 / 1);
+  --clb-c-orange-400: oklch(0.81 0.16 75.65 / 1);
+
+  --clb-c-pink-500: oklch(0.67 0.23 342.29 / 1);
+
+  --clb-c-rose-500: oklch(0.64 0.21 28.54 / 1);
+
+
+  --fade-speed: 0.4s;
+
+  --pattern-fg: color-mix(in oklab, var(--clb-c-gray-blue-800) 10%, transparent);
+}
+
+@theme inline {
+  --font-*: initial;
+
+  --color-*: initial;
+
+
+  --color-white: var(--clb-c-base-white);
+  --color-black: var(--clb-c-base-black);
+  --color-primary: var(--clb-c-blue-600);
+  --color-primary-700: var(--clb-c-blue-700);
+  --color-secondary-300: var(--clb-c-gray-blue-300);
+  --color-secondary-400: var(--clb-c-gray-blue-400);
+  --color-secondary-600: var(--clb-c-gray-blue-600);
+  --color-secondary-700: var(--clb-c-gray-blue-700);
+  --color-secondary-800: var(--clb-c-gray-blue-800);
+  --color-secondary-850: var(--clb-c-gray-blue-850);
+  --color-secondary-870: var(--clb-c-gray-blue-870);
+  --color-secondary-900: var(--clb-c-gray-blue-900);
+
+  --color-success: var(--clb-c-green-500);
+  --color-success-600: var(--clb-c-green-600);
+  --color-warning: var(--clb-c-orange-500);
+  --color-warning-400: var(--clb-c-orange-400);
+
+  --color-info: var(--clb-c-blue-light-500);
+  --color-info-400: var(--clb-c-blue-light-400);
+
+  --color-error: var(--clb-c-rose-500);
+}
+
+
+
+@layer base {
+  body {
+
+    @apply bg-secondary-900;
+    font-family: 'yekanbakh';
+    color: var(--color-secondary-300);
+
+    line-height: var(--text-base--line-height);
+    overflow-x: hidden;
+  }
+
+  input[type=number] {
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0;
+    /* <-- Apparently some margin are still there even though it's hidden */
+  }
+
+
+}
