@@ -11,6 +11,7 @@ import { TextBox } from "@/app/_components/textbox";
 import { Button } from "@/app/_components/button";
 import Phone from "@/app/_assets/phone";
 import Eye from "@/app/_assets/eye";
+import { signinActions } from "@/app/_actions/auth-actions";
 
 export const SignInForm: FC = () => {
   const {
@@ -25,8 +26,8 @@ export const SignInForm: FC = () => {
 
   const onSubmit = async (data: SignInModel) => {
     startTransition(async () => {
-      // const response = await signInAction(data);
-      console.log(data);
+      const response = await signinActions(data);
+      console.log(response);
     });
   };
 
@@ -48,7 +49,7 @@ export const SignInForm: FC = () => {
             name="password"
             register={register}
             errors={errors}
-            type="number"
+            type="password"
             placeholder="رمز عبور"
             label="رمز عبورت رو وارد کن"
             icon={<Eye />}
