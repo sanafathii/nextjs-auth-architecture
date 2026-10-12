@@ -4,6 +4,7 @@ import { SignInModel } from "../(auth)/_types/auth.types";
 import { cookies, headers } from "next/headers";
 import { JWT, UserResponse, userSession } from "../_types/auth.types";
 import { jwtDecode } from "jwt-decode";
+import { decryptSession, encryptSession } from "../utils/sessoin";
 
 export async function signinActions(model: SignInModel) {
   const headerList = headers();
@@ -48,7 +49,9 @@ export async function setAuthCookieAction(user: UserResponse) {
   };
 
   const cookieStore = await cookies();
-  cookieStore.set("session", JSON.stringify(session), {
+  const encryptsession = await encryptSession(session);
+  // const decryptSession = await decryptSession(encryptsession);
+  cookieStore.set("session", encryptsession, {
     httpOnly: true,
     secure: true,
     sameSite: "strict",
