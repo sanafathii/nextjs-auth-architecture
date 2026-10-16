@@ -12,6 +12,8 @@ import { Button } from "@/app/_components/button";
 import Phone from "@/app/_assets/phone";
 import Eye from "@/app/_assets/eye";
 import { signinActions } from "@/app/_actions/auth-actions";
+import { useSessionStore } from "@/app/_stores/auth.strore";
+import { useRouter } from "next/navigation";
 
 export const SignInForm: FC = () => {
   const {
@@ -24,10 +26,17 @@ export const SignInForm: FC = () => {
 
   const [isPending, startTransition] = useTransition();
 
+  const router = useRouter();
+
+  const updateSession = useSessionStore((state) => state.updateSession);
+
   const onSubmit = async (data: SignInModel) => {
     startTransition(async () => {
       const response = await signinActions(data);
-      console.log(response);
+      if (response.isSuccess) {
+        await updateSession();
+        router.push("/dashboard/courses");
+      }
     });
   };
 
